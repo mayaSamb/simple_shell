@@ -2,9 +2,10 @@
 /**
  * search_cwd - look for current working dir
  * @filename: file name
+ * @ret: size char
  * Return: current working dir
  */
-char *search_cwd(char *filename, char *er)
+char *search_cwd(char *filename, char *ret)
 {
 	DIR *dir;
 	struct dirent *sd;
@@ -35,10 +36,10 @@ char *search_cwd(char *filename, char *er)
 				if (!(access(ret, X_OK)))
 					return (ret);
 				else
-					write(2, er, 5);
+					write(2, ret, 5);
 			}
 		}
 	}
 	closedir(dir);
-	return (er);
+	return (ret);
 }
